@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Eco-Agri Digital · Lumajang</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script src="tailwind-config.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="font-sans text-slate-800 dark:text-slate-100 antialiased">
+
+<!-- NAV -->
+<header class="bg-emerald-900 text-white">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+    <button data-goto="hero" class="font-bold tracking-tight">🌱 Eco-Agri Digital</button>
+    <button id="themeBtn" class="rounded-full bg-emerald-800 hover:bg-emerald-700 px-3 py-1.5 text-sm" aria-label="Ganti tema">🌙 Mode</button>
+  </div>
+</header>
+<div class="bg-emerald-800 text-white"><div id="pageTabs" role="tablist" class="max-w-6xl mx-auto px-4 py-2 flex gap-2 overflow-x-auto"></div></div>
+
+<main>
+<!-- 1. HERO -->
+<section id="hero" class="page active bg-gradient-to-b from-emerald-900 to-emerald-800 text-white">
+  <div class="max-w-6xl mx-auto px-4 py-14 md:py-20 grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <p class="text-amber-300 text-sm font-semibold uppercase tracking-widest mb-3">Wawasan Ekologi · Lumajang</p>
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight">Eco-Agri Digital: Syariat Ikhtiar, Teknologi Presisi, Keberkahan Bumi Lumajang.</h1>
+      <p class="mt-5 text-emerald-100 md:text-lg">Harmoni antara ikhtiar digital pemantauan lahan dan tawakal kepada Sang Pencipta.</p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <button data-goto="simulator" class="bg-amber-500 hover:bg-amber-400 text-emerald-950 font-semibold px-5 py-2.5 rounded-full">Coba Simulator</button>
+        <button data-goto="perspektif" class="border border-emerald-300/50 hover:bg-emerald-700 px-5 py-2.5 rounded-full">Tiga Perspektif</button>
+      </div>
+    </div>
+    <figure class="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-6">
+      <figcaption class="text-xs uppercase tracking-widest text-amber-300 mb-3">Muraqabah · QS. Ar-Rum: 41</figcaption>
+      <p dir="rtl" lang="ar" class="font-arab text-2xl md:text-3xl leading-loose text-right">ظَهَرَ الْفَسَادُ فِي الْبَرِّ وَالْبَحْرِ بِمَا كَسَبَتْ أَيْدِي النَّاسِ لِيُذِيقَهُم بَعْضَ الَّذِي عَمِلُوا لَعَلَّهُمْ يَرْجِعُونَ</p>
+      <blockquote class="mt-4 text-emerald-50 text-sm md:text-base italic">“Telah tampak kerusakan di darat dan di laut disebabkan karena perbuatan tangan manusia, Allah menghendaki agar mereka merasakan sebagian dari (akibat) perbuatan mereka, agar mereka kembali (ke jalan yang benar).”</blockquote>
+      <details class="mt-4 text-sm text-emerald-100">
+        <summary class="cursor-pointer text-amber-300">Pertanyaan refleksi</summary>
+        <p class="mt-2">Jejak apa yang sudah kita tinggalkan pada air dan tanah kita? Langkah kecil apa yang bisa kita mulai hari ini sebagai khalifah fil ’ardh? (QS. Al-A’raf: 56 mengingatkan agar tidak berbuat kerusakan di bumi setelah diperbaiki.)</p>
+      </details>
+    </figure>
+  </div>
+</section>
+
+<!-- 2. SIMULATOR -->
+<section id="simulator" class="page max-w-6xl mx-auto px-4 py-14">
+  <h2 class="text-2xl md:text-3xl font-bold text-emerald-900 dark:text-emerald-300">Dashboard Simulasi Kode Sederhana</h2>
+  <p class="mt-2 text-slate-600 dark:text-slate-400">Geser pengaturan, lalu baca saran untuk lahan Anda.</p>
+
+  <div class="mt-8 grid lg:grid-cols-2 gap-6">
+    <!-- Kiri -->
+    <div class="space-y-5">
+      <div class="rounded-2xl bg-white dark:bg-emerald-950/60 border border-emerald-100 dark:border-emerald-900 p-5 space-y-5 shadow-sm">
+        <div>
+          <label class="flex justify-between text-sm font-medium"><span>💧 Kelembapan Tanah</span><span id="vMoist" class="text-emerald-700 dark:text-emerald-300 font-bold"></span></label>
+          <input id="inMoist" type="range" min="0" max="100" value="55" class="w-full mt-2">
+        </div>
+        <div>
+          <label class="flex justify-between text-sm font-medium"><span>🌡️ Suhu Lingkungan</span><span id="vTemp" class="text-emerald-700 dark:text-emerald-300 font-bold"></span></label>
+          <input id="inTemp" type="range" min="18" max="40" value="29" class="w-full mt-2">
+        </div>
+        <div>
+          <label class="flex justify-between text-sm font-medium"><span>🏞️ Debit Air Sumber</span><span id="vFlow" class="text-emerald-700 dark:text-emerald-300 font-bold"></span></label>
+          <input id="inFlow" type="range" min="0" max="20" step="0.5" value="10" class="w-full mt-2">
+        </div>
+        <label class="flex items-center justify-between text-base font-medium cursor-pointer">
+          <span>🍂 Mulsa organik terpasang</span>
+          <input id="inMulch" type="checkbox" class="h-7 w-7 accent-emerald-700">
+        </label>
+      </div>
+    </div>
+
+    <!-- Kanan: hasil (di atas pada layar HP) -->
+    <div class="order-first lg:order-none lg:sticky lg:top-4 lg:self-start rounded-2xl bg-white dark:bg-emerald-950/60 border border-emerald-100 dark:border-emerald-900 p-4 sm:p-5 shadow-sm">
+      <h3 class="text-sm font-semibold text-slate-500 dark:text-slate-400">Status Lahan</h3>
+      <div id="badge" class="mt-2 rounded-2xl px-4 py-4 text-center"><p id="bLabel" class="text-3xl font-extrabold"></p><p id="bMean" class="mt-1 text-base font-medium"></p></div>
+      <p class="mt-4 text-sm font-semibold">Lakukan sekarang</p>
+      <ul id="steps" class="mt-2 space-y-2"></ul>
+      <div class="mt-3 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 p-4">
+        <p class="text-xs uppercase tracking-widest text-amber-700 dark:text-amber-300 font-semibold">Pengingat</p>
+        <p id="spirit" class="mt-1 text-base"></p>
+      </div>
+      <p class="mt-3 text-xs text-slate-500 dark:text-slate-400">Perkiraan umum. Sesuaikan dengan jenis tanaman dan kondisi petak Anda.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. PERSPEKTIF -->
+<section id="perspektif" class="page bg-emerald-50 dark:bg-emerald-950/40 py-14">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-emerald-900 dark:text-emerald-300">Kerangka Analisis: Tiga Sudut Pandang</h2>
+    <div id="tabs" role="tablist" class="mt-6 flex gap-2 overflow-x-auto pb-1"></div>
+    <div id="tabPanel" role="tabpanel" class="mt-4 rounded-2xl bg-white dark:bg-emerald-950/60 border border-emerald-100 dark:border-emerald-900 p-6 shadow-sm"></div>
+  </div>
+</section>
+
+<!-- 4. MITIGASI -->
+<section id="mitigasi" class="page max-w-6xl mx-auto px-4 py-14">
+  <h2 class="text-2xl md:text-3xl font-bold text-emerald-900 dark:text-emerald-300">Modul Mitigasi Kekeringan Lahan Lumajang</h2>
+  <p class="mt-2 text-slate-600 dark:text-slate-400">Strategi adaptasi lokal. Ketuk kartu untuk detail.</p>
+  <div id="mitigasiGrid" class="mt-6 grid md:grid-cols-3 gap-4"></div>
+</section>
+
+<!-- 5. GALERI -->
+<section id="galeri" class="page bg-emerald-50 dark:bg-emerald-950/40 py-14">
+  <div class="max-w-6xl mx-auto px-4">
+    <!-- Header Galeri -->
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <h2 class="text-2xl md:text-3xl font-bold text-emerald-900 dark:text-emerald-300">
+        Galeri Dokumentasi Lapangan
+      </h2>
+      <p class="mt-2 text-sm md:text-base text-slate-600 dark:text-slate-400">
+        Bukti kegiatan observasi &amp; aksi nyata mitigasi kekeringan lahan pertanian di Lumajang
+      </p>
+    </div>
+
+    <!-- Grid Foto Responsif (4 Kolom pada Layar Besar/Web) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+
+  <!-- Foto 1: Observasi Lahan Pertanian -->
+  <article class="rounded-2xl overflow-hidden bg-white dark:bg-emerald-900/40 border border-emerald-100 dark:border-emerald-800/60 shadow-sm transition hover:shadow-md">
+    <div class="relative aspect-[3/4] bg-emerald-100 dark:bg-emerald-950 overflow-hidden">
+      <img src="1.jpeg" alt="Observasi Lahan Pertanian Lumajang" class="w-full h-full object-cover">
+      <span class="absolute bottom-2 left-2 text-[11px] font-mono bg-black/70 text-amber-300 px-2 py-0.5 rounded shadow">
+        📅 11 Okt 2026 · 16.30 WIB
+      </span>
+    </div>
+    <div class="p-4">
+      <h3 class="font-semibold text-emerald-950 dark:text-emerald-200 text-base">
+      1. Membaca & memahami isi surah Ar-Rum (41)
+      </h3>
+      <p class="mt-1 text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+      Pada kegiatan ini kami mengkaji QS. Ar-Rum ayat 41 "Telah nampak kerusakan karena konsep di darat dan di laut disebabkan perbuatan tangan manusia" Sebagai dasar konsep Hifz Al-Bi'ah dan peran manusia sebagai khalifah fil Ardh dalam menjaga kelestarian Jogoyudan
+    </div>
+  </article>
+
+  <!-- Foto 2: Pengambilan Sampel & Kelembapan -->
+  <article class="rounded-2xl overflow-hidden bg-white dark:bg-emerald-900/40 border border-emerald-100 dark:border-emerald-800/60 shadow-sm transition hover:shadow-md">
+    <div class="relative aspect-[4/3] bg-emerald-100 dark:bg-emerald-950 overflow-hidden">
+      <img src="2.jpeg" alt="Pengambilan Sampel Tanah" class="w-full h-full object-cover">
+      <span class="absolute bottom-2 left-2 text-[11px] font-mono bg-black/70 text-amber-300 px-2 py-0.5 rounded shadow">
+        📅 12 Okt 2026 · 10.06 WIB
+      </span>
+    </div>
+    <div class="p-4">
+      <h3 class="font-semibold text-emerald-950 dark:text-emerald-200 text-base">
+        2. Menentukan objek observasi lapangan
+      </h3>
+      <p class="mt-1 text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+      Kelompok 06, kami melakukan diskusi awal untuk menentukan objek observasi lapangan. Dan kami mensepakati pada kondisi tanah sawah di Lumajang
+      </p>
+    </div>
+  </article>
+
+  <!-- Foto 3: Wawancara & Empati Sosial -->
+  <article class="rounded-2xl overflow-hidden bg-white dark:bg-emerald-900/40 border border-emerald-100 dark:border-emerald-800/60 shadow-sm transition hover:shadow-md">
+    <div class="relative aspect-[4/3] bg-emerald-100 dark:bg-emerald-950 overflow-hidden">
+      <img src="2_2.jpeg" alt="Diskusi dengan Petani Lokal" class="w-full h-full object-cover">
+      <span class="absolute bottom-2 left-2 text-[11px] font-mono bg-black/70 text-amber-300 px-2 py-0.5 rounded shadow">
+        📅 12 Okt 2026 · 10:46 WIB
+      </span>
+    </div>
+    <div class="p-4">
+      <h3 class="font-semibold text-emerald-950 dark:text-emerald-200 text-base">
+        3. Survei lapangan untuk melihat kondisi tanah
+      </h3>
+      <p class="mt-1 text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+      Kami kelompok 06 hari ini (senin, 12 Okt 2026) melakukan Observasi lapangan di kondisi tanah sawah area persawahan. Ditemukan yang retak, kering, gersang akibat kekeringan panjang. Temuan dari ini menjadi bukti nyata QS. Ar Rum ayat 41 tentang kerusakan di darat akibat ulah manusia dan menjadi dasar implementasi prinsip Khalifah fil Ardh Ec Hifz Al - Bi'ah dalam Eco-Agri Digital
+      </p>
+    </div>
+  </article>
+
+  <!-- Foto 4: Diskusi & Coding Simulator -->
+  <article class="rounded-2xl overflow-hidden bg-white dark:bg-emerald-900/40 border border-emerald-100 dark:border-emerald-800/60 shadow-sm transition hover:shadow-md">
+    <div class="relative aspect-[3/4] bg-emerald-100 dark:bg-emerald-950 overflow-hidden">
+      <img src="2_1.jpeg" alt="Diskusi Kelompok dan Pembuatan Kode" class="w-full h-full object-cover">
+      <span class="absolute bottom-2 left-2 text-[11px] font-mono bg-black/70 text-amber-300 px-2 py-0.5 rounded shadow">
+        📅 12 Okt 2026 · 10:47 WIB
+      </span>
+    </div>
+    <div class="p-4">
+      <h3 class="font-semibold text-emerald-950 dark:text-emerald-200 text-base">
+        4. Dokumentasi detail tanah
+      </h3>
+      <p class="mt-1 text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+      Kondisi lahan sawah Jogoyudan, Lumajang yang mengalami kekeringan ekstrem. Tanah terlihat retak parah dan ditumbuhi sisa jerami padi yang mengering dan mati. Kondisi ini menjadi bukti nyata kerusakan di darat (Zhahara Al-Fasad fil Barri) sebagaimana QS. Ar-Rum:41, akibat perubahan iklim dan kurangnya pengelolaan air yang berkelanjutan
+      </p>
+    </div>
+  </article>
+
+  <!-- Foto 5: Aksi Nyata & Eco-Mitigasi -->
+  <article class="rounded-2xl overflow-hidden bg-white dark:bg-emerald-900/40 border border-emerald-100 dark:border-emerald-800/60 shadow-sm transition hover:shadow-md">
+    <div class="relative aspect-[3/4] bg-emerald-100 dark:bg-emerald-950 overflow-hidden">
+      <img src="3.jpeg" alt="Aksi Nyata Konservasi Air" class="w-full h-full object-cover">
+      <span class="absolute bottom-2 left-2 text-[11px] font-mono bg-black/70 text-amber-300 px-2 py-0.5 rounded shadow">
+        📅 13 Okt 2026 · WIB
+      </span>
+    </div>
+    <div class="p-4">
+      <h3 class="font-semibold text-emerald-950 dark:text-emerald-200 text-base">
+        5. Pencatatan Data Hasil Observasi Lapangan 
+      </h3>
+      <p class="mt-1 text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+        Setelah observasi di persawahan, Kelompok 06 melakukan pencatatan dan evaluasi data lapangan secara langsung di lokasi. Setiap anggota melakukan pengecekan hasil temuan tentang kondisi tanah retak dan degradasi lahan untuk di masukkan ke dalam logbook proyek Eco-Agri Digital.
+      </p>
+    </div>
+  </article>
+  <article class="rounded-2xl overflow-hidden bg-white dark:bg-emerald-900/40 border border-emerald-100 dark:border-emerald-800/60 shadow-sm transition hover:shadow-md">
+    <div class="relative aspect-[3/4] bg-emerald-100 dark:bg-emerald-950 overflow-hidden">
+      <img src="4.jpeg" alt="Aksi Nyata Konservasi Air" class="w-full h-full object-cover">
+      <span class="absolute bottom-2 left-2 text-[11px] font-mono bg-black/70 text-amber-300 px-2 py-0.5 rounded shadow">
+        📅 14 Okt 2026 · 09.53 WIB
+      </span>
+    </div>
+    <div class="p-4">
+      <h3 class="font-semibold text-emerald-950 dark:text-emerald-200 text-base">
+      6.  Perancangan Solusi Digital
+      </h3>
+      <p class="mt-1 text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+        Sebagai tindak lanjut, kami merancang solusi berupa Web Pengukuran Air. Web ini bertujuan untuk memonitoring kelembaban tanah dan kualitas air secara real-time agar petani dapat melakukan irigasi yang tepat dan mencegah degradasi tanah lebih lanjut.
+      </p>
+    </div>
+  </article>
+  <article class="rounded-2xl overflow-hidden bg-white dark:bg-emerald-900/40 border border-emerald-100 dark:border-emerald-800/60 shadow-sm transition hover:shadow-md">
+    <div class="relative aspect-[3/4] bg-emerald-100 dark:bg-emerald-950 overflow-hidden">
+      <img src="6.jpeg" alt="Aksi Nyata Konservasi Air" class="w-full h-full object-cover">
+      <span class="absolute bottom-2 left-2 text-[11px] font-mono bg-black/70 text-amber-300 px-2 py-0.5 rounded shadow">
+        📅 17 Okt 2024 · 10.58 WIB
+      </span>
+    </div>
+    <div class="p-4">
+      <h3 class="font-semibold text-emerald-950 dark:text-emerald-200 text-base">
+       7. Evaluasi Akhir & Penyusunan Laporan Penutup Proyek Eco-Agri Digital
+      </h3>
+      <p class="mt-1 text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+        Kami melakukan evaluasi akhir dan briefing penutup setelah rangkaian observasi lapangan di Jogoyudan selesai. Kegiatan ini membahas rangkuman temuan kerusakan lahan, progres pembuatan Web Pengukuran Air sebagai solusi Islah, dan pembagian tugas penyusunan logbook serta laporan akhir.
+      </p>
+    </div>
+  </article>
+  <article class="rounded-2xl overflow-hidden bg-white dark:bg-emerald-900/40 border border-emerald-100 dark:border-emerald-800/60 shadow-sm transition hover:shadow-md">
+    <div class="relative aspect-[3/4] bg-emerald-100 dark:bg-emerald-950 overflow-hidden">
+      <img src="bersama.jpeg" alt="Aksi Nyata Konservasi Air" class="w-full h-full object-cover">
+      <span class="absolute bottom-2 left-2 text-[11px] font-mono bg-black/70 text-amber-300 px-2 py-0.5 rounded shadow">
+      📅 13 Okt 2026 · 11.25 WIB
+      </span>
+    </div>
+    <div class="p-4">
+      <h3 class="font-semibold text-emerald-950 dark:text-emerald-200 text-base">
+        Kelompok 06
+      </h3>
+      <p class="mt-1 text-xs mdtext-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+       1. IFAL FIRGIAN SERASATRYO
+      </p>
+      <p class="mt-1 text-xs mdtext-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+       2. JASMINE SALSABILA INAYAH SANTOSO
+      </p>
+      <p class="mt-1 text-xs mdtext-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+       3. MAYA SALSABILA
+      </p>
+      <p class="mt-1 text-xs mdtext-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+       4. ROBBY AWALUDIN MALIK
+      </p>
+    </div>
+  </article>
+
+</div>
+
+
+
+<!-- FOOTER -->
+<footer class="bg-emerald-950 text-emerald-100">
+  <div class="max-w-6xl mx-auto px-4 py-12 grid md:grid-cols-2 gap-10">
+    <div>
+      <h2 class="text-xl font-bold text-amber-300">Jejak Digital, Jejak Langkah</h2>
+      <p class="text-lg">Harmoni Teknologi dan Ekologi</p>
+      <p class="mt-4 text-sm text-emerald-200">Teknologi hanyalah sarana ikhtiar. Hasilnya kita serahkan kepada Allah, sementara tanggung jawab menjaga bumi tetap kita pikul bersama sebagai khalifah fil ’ardh.</p>
+    </div>
+    <div class="rounded-2xl bg-emerald-900/60 p-5">
+      <div class="flex items-center justify-between">
+        <h3 class="font-semibold">🕌 Waktu Sholat · Lumajang</h3>
+        <span id="clock" class="text-sm text-amber-300 tabular-nums"></span>
+      </div>
+      <p id="nextPrayer" class="mt-2 text-sm text-emerald-100" aria-live="off"></p>
+      <ul id="prayerList" class="mt-3 grid grid-cols-3 gap-2 text-center text-sm"></ul>
+    </div>
+  </div>
+  <p class="text-center text-xs text-emerald-400 pb-6">© Agama “Wawasan Ekologi”</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

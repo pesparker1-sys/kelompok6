@@ -1,0 +1,10 @@
+:root { box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); --bg:#f7faf6; }
+html { scroll-behavior: smooth; scroll-padding-top: env(safe-area-inset-top, 0px); }
+html.dark { --bg:#0a1511; color-scheme: dark; }
+body { background: var(--bg); }
+input[type=range] { accent-color: #047857; height: 2rem; cursor: pointer; }
+.dark input[type=range] { accent-color: #34d399; }
+pre code { font-family: ui-monospace, Menlo, monospace; }
+.tile { transition: background-color .5s, transform .3s; }
+.page { display: none; min-height: 60vh; }
+.page.active { display: block; }
